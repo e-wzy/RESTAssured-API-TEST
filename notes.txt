@@ -114,18 +114,18 @@ Make API Requests
    endpoint:  http://localhost/api_testing/category/read.php
  
     > Rest-Assured Pattern
-       Rest-assured follows the Given, when, then pattern.
+       Rest-assured follows the given, when, then pattern.
        
-       Given:
+       given:
        ~~~~~
        to specify any prerequisites to the actual request being made.
        which include things like headers, authentication or even setting parameters.      
      
-       When
+       when
        ~~~~~~
        To describe the action to take.
     
-       Then
+       then
        ~~~~~
        To describe the expected result.
 
@@ -169,8 +169,8 @@ Make API Requests
  
    
 8. Sumarry of API requests:
-   A full life cycle of a resource: creating, viewing, updating and deleting a product
-  > To update a product,  just need to provide field and its value to be updated.
+   A full life cycle of a resource includs creating, viewing, updating and deleting a product
+  > To update a product,  just need to provide field and its value to be updated, no need to provide every field.
            e.g:  String body = '''"
                                       { "id": 26,
                                          "price": 6                          
@@ -188,6 +188,7 @@ The response is essentially comprised of three components:
 1) HTTP status code: is a numeric value indicating if a request is successful or not.
     As many API  consumers will do a quick check to make sure the request was successful before
     attempting to process further with the reqponse.
+
     It is important for us to verify that the status code is correct.
 
 2) Headers: contain information about cookies, pagination, proxies, connection types and more.
@@ -229,7 +230,7 @@ Status code is specified in the doucmentation for the API.
 Background 
 ~~~~~~~~~~
 Response can include multiple objects and sometimes these are even nested, e.g. all products returned.
-The returned body contains an array called records which contain multiple objects with multiple fields.
+The returned body contains an array called records which contain multiple objects( or elements) with multiple fields.
 
 How to verify
 ~~~~~~~~~~
@@ -260,12 +261,12 @@ Here,  not verify every single thing or every values of all of the fields in eve
 
   > Use then.log90.headers() to get headers, then copy a header 's name and value to 
      header() to verify.
-     header("Content-Type", equalTo("application/json; charset=UTF-8")).
+    e.g.:  header("Content-Type", equalTo("application/json; charset=UTF-8")).
  
  > Sample code in 03-06.
 
   
-7. Seserializing response body
+7. Deserializing response body
    We want to get the response returned as a Java object,
   > Call as () not call then() which sends response in JSON or XML format.
      Inside the as(). we specfy the Java class name, we want to deserialize this response into this class,.

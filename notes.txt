@@ -1,0 +1,325 @@
+<< Java:Automated API Testing with REST Assured >>
+     by Angie Jones
+
+Introduction
+==========
+
+Background
+~~~~~~~~~~~
+Manually looking at API responses and verifying them by eye is problematic.
+Not only is it tedious, it is super-error prone.
+
+To build reliable and trustworthy (值得信赖的) tests that will ensure your APIs are behaving as
+you expect using JAVA and REST Assured library ( open source testing library ).
+
+Pre-requisites
+~~~~~~~~~~~~~~
+1. Know Java programming
+2. Java JDK 10 or higher installed.( support "var" declaration )
+3. A few open source dependencies installed.
+   1) Junit
+   2) REST-Assured library
+   3) Jackson-Databind library.  
+
+
+API setup
+~~~~~~~~~
+1. Configure the local hosts
+  download and install MAMP which will allow you to use your computer as the hosting server for 
+  your copy of the API.
+  from the website:https://www.mamp.info/
+
+  MAMP is central to perform API testing in this course.
+
+2. Create a database to hold our API data.
+    Here, the database provides what the API respones should match.
+
+    1) Click "WebStart",  find MySQL from https://www.mamp.info/,  then click on phpMyAdmin.
+    2) Enter the database name, then click Create
+    3) Import API data.
+       Unzip APITesting.zip from exercise folder - "00_03".
+    4) Go back to database on phpMyAdmin.
+        Click the Import tab -> click the Choose File button ->Select ApiTestingDB.sql
+        ->Click Go.
+       Two tables are there - Products and Categories.
+     
+    5) Copy this unzipped folder "api-testing" to my local host folder.
+         The local host folder is Document root: C:/MAMP/htdocs which is shown 
+         on \\localhost on browser.
+
+    6) Copy http://localhost/api_testing/product/read.php to new tab in browser.
+        A JSON response should be got.
+
+---------------------------------------------------------------------------------
+Getting Started with REST Assured.
+===========================
+1. The challenge with API testing.
+   > One way to validate API is to have a human tester examine the response returned from 
+      API request.
+      When the responses are long and contain a lot of data, human validation is error prone and
+      attempting to verify them manually is almost impssible.
+      It is much more effective to write automated tests that will thoroughly and consistently verify all of 
+      the details of an API response. 
+
+2. REST Assured testing library
+   > is an open source Java library that makes it easy to write automated API tests.
+      Use this library to make API requests or verify the responses.
+       https://rest-assured.io
+
+  > Create maven project in IntelliJ 
+    
+  > Get Maven dependency code from https://mvnrepository.com
+         1)  Search for  rest-assured.
+              copy REST-Assured depenency code into POM.xml file.
+         
+        2)  Add JUnit as test runner library to execute tests.
+              Search for JUnit 5, select org.junit.jupiter » junit-jupiter-api,
+               copy the dependency code into the POM file.
+
+       Note:  Click refresh and wait a while for the IntelliJ to find these dependencies.
+
+------------------------------------------------------------------------------------
+Make API Requests
+=================
+1.  Anatomy of a request
+    An API request essentially comprised of four components:
+    1) Endpoint: this is where our request is sent for processing.
+                       in this example, our endpoint is 
+                        http://localhost/\api_testing/category/update.php
+
+    2) Method:  indicates the type of action we would like to take.
+    3) Headers: specify any authorization credentials that may be required 
+                      to make the request as well as other pertinent information (相关资料).
+                      such as  the format of how we like to receive our response.
+
+     4) Data:    this is an optional part of the requests that can be provided 
+                     if there is additional information the API will need in order to fulfill our request.
+                      
+                    The approach to providing the data varies - 
+                                        via query parameters, via body or playload.
+
+2. Request methods
+1) API request types 
+    >determined by the method used to make ther request.
+    >Type : Create, Read, Update, Delete.
+
+2) Request Methods
+    >POST:  to create a new object.
+    >GET:    to obtain information about an existing object.
+    >PUT:    to update an existing object .
+    >DELETE: to delete an existing object.
+
+3. Making a GET request
+   Get: Retireve all of categories.
+   endpoint:  http://localhost/api_testing/category/read.php
+ 
+    > Rest-Assured Pattern
+       Rest-assured follows the Given, when, then pattern.
+       
+       Given:
+       ~~~~~
+       to specify any prerequisites to the actual request being made.
+       which include things like headers, authentication or even setting parameters.      
+     
+       When
+       ~~~~~~
+       To describe the action to take.
+    
+       Then
+       ~~~~~
+       To describe the expected result.
+
+    > Sample code in 02-03, require Java 10 JDK or higher.
+       Use 127.0.0.1 instead of localhost
+       Start MAMP server before running the test script. 
+ 
+4. Making a POST request
+ >  To create a new brand product.
+ >  POST Request Body is required, this body is known as a payload.
+    A variable to hold the body as a JSON is needed.
+ > Use text block to store the body data.
+    Comment inside the block is not allowed,orelse error will happen.
+> Sample code in 02-04. 
+
+5. Making a PUT request
+    To update an existing resource within the system.
+>Sample code in 02-05.
+
+6. Making a DELETE request
+   To remove a resource from a system.
+>Sample code in 02-06.
+
+7.  Serializing request body
+     When creating large bodies as part of a request, having a huge text block in your code may not be ideal.
+      Using the serialized object for the body is an alternative approach to using a plain string or a text block. 
+
+    > Create a class to operate data of the body.
+       name all variables exactly as they are named in the API.
+
+    > To generate getter and setter
+       in IntelliJ,   right click -> click generate ->choose getter and setter option.
+ 
+   > pom,xml
+       To send this body as JSON, an open soure library - Jackson Databind is required.
+       go to code in IntelliJ -> generate->dependency->search for  Jackson-Databind -> add the dependency to the pom file.
+       ->refresh Maven. 
+
+   > Pass object of the class to body() following given().
+      given().body(product).when().post(endpoint).then();
+ 
+   
+8. Sumarry of API requests:
+   A full life cycle of a resource: creating, viewing, updating and deleting a product
+  > To update a product,  just need to provide field and its value to be updated.
+           e.g:  String body = '''"
+                                      { "id": 26,
+                                         "price": 6                          
+                                       } 
+                                      """
+9: Quiz section -  very good questions!
+
+--------------------------------------------------------------------------------------  
+Validating API response
+=====================
+The communication between APIs consists of two parts - a Request and a Response.
+
+1. Anatomy of a response.
+The response is essentially comprised of three components:
+1) HTTP status code: is a numeric value indicating if a request is successful or not.
+    As many API  consumers will do a quick check to make sure the request was successful before
+    attempting to process further with the reqponse.
+    It is important for us to verify that the status code is correct.
+
+2) Headers: contain information about cookies, pagination, proxies, connection types and more.
+    verify as needed.
+
+3) Body: contains the data that was requested.
+    It is critical to verify this part of the response.
+     
+2. Verifying status code of a response.
+Status code is specified in the doucmentation for the API.
+    > Use the method  - assertThat().statusCode(200)
+       200 -  the request is successful.
+   > Sample code in 03-02
+
+3. Accessing response body
+   >before automating the assertions for a test,  it is important to manually verify what is the expected result.
+     compare the response to the documentation for the API.
+     once we are confident that the fields and their respective values are correct, then we can automate the test.
+  
+     to get the response or  print out the response
+     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      response.log().body()  or then().log().body().
+
+4. Verifying fields of response.
+    > Print out all fields and their values of the response to the console.
+    > Chain additional assertions to "assertThat(),statusCode(200)" by copy & paste
+       those fileds and their values to body(), e.g:  body("id", equalTo("2")).  
+
+    > Use Hamcrest matchers to do assertion.
+       The matcher is contained in the REST Assured library.
+       is a class of functions that allow you to compare your expected result with the actual one.
+       web :  http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html
+   
+    > Assert filelds as needed, it is not necessary to assert all of fields.
+    > Sample code in 03-04.
+
+5. Verifying complex response bodies
+
+Background 
+~~~~~~~~~~
+Response can include multiple objects and sometimes these are even nested, e.g. all products returned.
+The returned body contains an array called records which contain multiple objects with multiple fields.
+
+How to verify
+~~~~~~~~~~
+Here,  not verify every single thing or every values of all of the fields in every product.
+
+1). First verify the status code
+2). Verify size of the body > 0  -  A  lenient test (宽松的测试) to verify at least something will be returned.
+3). Verify every product returned has the appropriate fields and some value was returned.
+   > add assertions for each field.
+   > Use "records.field name" to access each field
+      here the name of the array is records.
+      and "records.field name"  returns a list of all of the field values.
+   
+    > Assertions made here are on the entire list not value of single field.
+       use "everyItem()" to ensure that every item in this collection passes the condition inside the brackets().
+       it does not assert on the exact value but ensure every field has a value instead.
+       
+     > Use" records.field name [x]" to verify a specific filed or element in the array records.
+
+4). Sample code in 03-05
+
+6. Verifying response header
+   >Headers is got by then().log().headers().
+   >Every line returned is a header.
+   >The important header to verify is Content-Type. If your API supports both XML and JSON formats, 
+     you want to make sure that the response is in the correct format.Otherwise, your consumer's program will break
+     when they attempt to parse the response.
+
+  > Use then.log90.headers() to get headers, then copy a header 's name and value to 
+     header() to verify.
+     header("Content-Type", equalTo("application/json; charset=UTF-8")).
+ 
+ > Sample code in 03-06.
+
+  
+7. Seserializing response body
+   We want to get the response returned as a Java object,
+  > Call as () not call then() which sends response in JSON or XML format.
+     Inside the as(). we specfy the Java class name, we want to deserialize this response into this class,.
+     e.g.:  as(Product.class) - 
+              it takes that response and look for fields within that class to see if the response can be met.
+
+  > Verify entire body returned with one easy assertion.
+     assertThat(actualProduct, samePropertyValuesAs(expectedProduct));
+
+
+     
+
+
+
+
+
+            
+
+
+
+   
+
+
+
+
+     
+
+
+
+
+       
+
+
+
+ 
+
+
+
+         
+
+
+
+
+ 
+        
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+{
+    "host": "c13405.sgvps.net",
+    "username": "lucaslongo@trainingxyz.com",
+    "password": ".114##ld1jut",
+    "remotePath": "/",
+    "protocol": "ftp",
+    "port": 21,
+    "fileNameEncoding": "utf8",
+    "autoUpload": true,
+    "autoDelete": false,
+    "autoDownload": false,
+    "ignore": [
+        ".git",
+        "/.vscode"
+    ]
+}

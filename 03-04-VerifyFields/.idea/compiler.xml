@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="03-04-VerifyFields" />
+        <module name="02-04-PostRequest" />
+        <module name="03-02-VerifyStatusCode" />
+        <module name="01-02-api-testing" />
+        <module name="02-07-SerializeRequestBody" />
+        <module name="02-05-PutRequest" />
+        <module name="02-06-DeleteRequest" />
+        <module name="02-03-GetRequest" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

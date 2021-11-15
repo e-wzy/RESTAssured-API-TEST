@@ -1,0 +1,69 @@
+<< Git and Git Hub> >> 
+
+Git
+==========
+>download: https://git-scm.com/download
+verify:   git --version
+
+>Create a new  ( or empty) local Git repository ( or reinitialise an existing one) in test ( project ) folder.
+   in command line, go to test directory
+   type:  git init
+
+>Create local main branch
+    git branch -M main
+ 
+2. GitHub
+> Create a GitHub account
+   https://github.com/join
+   username: e-wzy
+   password: Yishun756!
+   email: eileen.infosoft@gmail.com
+
+> Creat a new GitHub repository
+   Click on "+" from upper-corner of the GitHub home page.
+   then click on " Creating repository" button.
+
+> Select instructions from "push an existing repository from the command line"
+   
+      > add a remote repository to local repository which will allow me to set up a URL 
+         in a location to send code to GitHub:
+            git remote add origin https://github.com/e-wzy/test-automation.git
+            origin :  shortname of the remote repository, and is default name.
+      > print out the location of my remote:
+            git remote -v
+    
+       > git status
+            show all untracked files under the test directory that I must add and commit 
+            or to know what changes made in current directory.
+     
+      > git add --all     ( is - - )
+            to add all the files staged for commit.
+      
+      >  to commit all the files.
+          git config --global user.email "eileen.infosoft@gmail.com" 
+          git config --gloabl user.name "e-wzy"
+          git commit -m "Inital commt"
+       
+      > push up all local changes of main branch to  main of the remote in GitHub
+           git push origin main
+
+      > to verify, go to Github
+         all of my files are in the GitHub.  
+      
+      > to verify if  there is anything to commit
+         git status
+   
+     > Change remote
+        git remote set-url origin  url
+
+
+> Summary
+    1)   3 steps to put  your changes up to Git server - Add (stage) , commit and push.
+         put all of chages under a folder :
+          cd folder
+          git add -A
+          git commit -mxxxxxx"
+          git push origin main
+
+    2)  Github allows you to view files and commit history but not allows you to edit or commit anything 
+         through the web interface. Github offers a limited set of functionalities.

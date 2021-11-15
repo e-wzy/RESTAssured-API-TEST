@@ -1,0 +1,24 @@
+{
+  "ftp://c13405.sgvps.net:21@lucaslongo@trainingxyz.com": {
+    ".DS_Store": {
+      "type": "-",
+      "size": 6148,
+      "lmtime": 0,
+      "modified": false
+    },
+    ".htaccess": {
+      "type": "-",
+      "size": 70,
+      "lmtime": 0,
+      "modified": false
+    },
+    "category": {},
+    "config": {},
+    "objects": {},
+    "product": {},
+    "teste": {},
+    "trainingxyz.com": {},
+    "untitled folder": {}
+  },
+  "$version": 1
+}

@@ -149,7 +149,7 @@ Make API Requests
    To remove a resource from a system.
 >Sample code in 02-06.
 
-7.  Serializing request body
+7.  Serializing request body into Java object.
      When creating large bodies as part of a request, having a huge text block in your code may not be ideal.
       Using the serialized object for the body is an alternative approach to using a plain string or a text block. 
 
@@ -266,17 +266,25 @@ Here,  not verify every single thing or every values of all of the fields in eve
  > Sample code in 03-06.
 
   
-7. Deserializing response body
-   We want to get the response returned as a Java object,
-  > Call as () not call then() which sends response in JSON or XML format.
-     Inside the as(). we specfy the Java class name, we want to deserialize this response into this class,.
+7. Deserializing response body into Java object.
+   We want to get the response returned as a Java object to model a body and represent it as a Java object.
+
+  > Call "as ()" not call "then()" which sends response in JSON or XML format.
+     Inside the as(), we specfy the Java class name, we want to deserialize this response into this class,.
      e.g.:  as(Product.class) - 
               it takes that response and look for fields within that class to see if the response can be met.
 
-  > Verify entire body returned with one easy assertion.
+  > Define expected result.
+     e.g.:  Product ecpectedProduct = new Product(...);
+ 
+   > Get actual result.
+     e.g.:   Product actualProduct = given()... when().get(endpoint).as(Product.class);
+
+  > Assert the actual result.
+     Verify entire body returned with one easy assertion.
      assertThat(actualProduct, samePropertyValuesAs(expectedProduct));
 
-
+8. Very good Quiz questions.
      
 
 

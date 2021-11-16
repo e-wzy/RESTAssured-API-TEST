@@ -101,6 +101,7 @@ public class ApiTest {
     }
 
     @Test
+    //Serialize request body into Java object.
     public void createSerializedProduct(){
         String endpoint = "http://127.0.0.1/api_testing/product/create.php";
         Product product = new Product(
@@ -137,8 +138,8 @@ public class ApiTest {
                 when().
                         get(endpoint).         //action
                 then().                        //response
-                      log().
-                       headers().
+                      log().                   //not a must
+                       headers().              //not a must
                        assertThat().
                             statusCode(200).     //assert status code
                             header("Content-Type", equalTo("application/json; charset=UTF-8")).
@@ -167,7 +168,7 @@ public class ApiTest {
                         queryParam("id", "2").
                         when().
                         get(endpoint).
-                        as(Product.class);
+                        as(Product.class);  //deserialize response body into Java object.
 
         assertThat(actualProduct, samePropertyValuesAs(expectedProduct));
 

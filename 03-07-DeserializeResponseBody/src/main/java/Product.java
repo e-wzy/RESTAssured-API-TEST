@@ -1,5 +1,5 @@
 public class Product {
-
+    //Name all variables exactly as they are named in the API.
     private int id;
     private String name;
     private String description;

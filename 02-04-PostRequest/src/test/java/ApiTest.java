@@ -49,7 +49,7 @@ public class ApiTest {
                 {
                 "name": "Water Bottle",
                 "description": "Blue water bottle. Holds 64 ounces",
-                "price": 12,
+                "price": 18,
                 "category_id": 3
                 }
                 """;

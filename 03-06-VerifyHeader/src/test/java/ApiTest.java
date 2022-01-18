@@ -109,6 +109,7 @@ public class ApiTest {
         var response = given().body(product).when().post(endpoint).then();
         response.log().body();
     }
+
     @Test
     public void updateSerializedProduct(){
         String endpoint = "http://127.0.0.1/api_testing/product/create.php";
@@ -128,13 +129,16 @@ public class ApiTest {
     public void getProducts(){
         String endpoint = "http://127.0.0.1/api_testing/product/read.php";
 
+      /*  var response = given().when().get(endpoint).then();
+        response.log().headers();*/
+
         var response =
                 given().
                 when().
                         get(endpoint).         //action
                 then().                        //response
                       log().
-                       headers().
+                       headers().              //print out headers
                        assertThat().
                             statusCode(200).     //assert status code
                             header("Content-Type", equalTo("application/json; charset=UTF-8")).

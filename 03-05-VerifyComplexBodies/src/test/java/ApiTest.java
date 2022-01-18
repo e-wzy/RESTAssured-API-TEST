@@ -134,7 +134,7 @@ public class ApiTest {
                         get(endpoint).         //action
                 then().                        //response
                       log().
-                        body().
+                        body().                //print out every field of response.
                         assertThat().
                         statusCode(200).      //assert status code
                         body("records.size()", greaterThan(0)).  // lenient test
@@ -144,9 +144,9 @@ public class ApiTest {
                         body("records.price", everyItem(notNullValue())).
                         body("records.category_id", everyItem(notNullValue())).
                         body("records.category_name", everyItem(notNullValue())).
-                        body("records.id[0]", equalTo("20"));
+                        body("records.id[0]", equalTo("28"));
 
-        //response.log().body();   // to print out response results on the screen.
+        //response.log().body();   // to print out response results on the screen. or done in above code.
 
         //response.log().all();
     }

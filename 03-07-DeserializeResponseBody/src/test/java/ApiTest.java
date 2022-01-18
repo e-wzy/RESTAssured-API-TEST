@@ -93,7 +93,7 @@ public class ApiTest {
         String endpoint = "http://127.0.0.1/api_testing/product/delete.php";
         String body = """
                 {
-                "id": 20
+                "id": 28
                 }
                 """;
         var response = given().body(body).when().delete(endpoint).then();
@@ -107,7 +107,7 @@ public class ApiTest {
         Product product = new Product(
                 "Water Bottle",
                 "Blue water bottle. Holds 64 ounces",
-                12,
+                120,
                 3
         );
         var response = given().body(product).when().post(endpoint).then();
@@ -115,12 +115,12 @@ public class ApiTest {
     }
     @Test
     public void updateSerializedProduct(){
-        String endpoint = "http://127.0.0.1/api_testing/product/create.php";
+        String endpoint = "http://127.0.0.1/api_testing/product/update.php";
         Product product = new Product(
-                19,
+                29,
                 "Water Bottle",
                 "Blue water bottle. Holds 64 ounces",
-                15,
+                29,
                 3,
                 "Active Wear - Women"
         );
@@ -168,8 +168,9 @@ public class ApiTest {
                         queryParam("id", "2").
                         when().
                         get(endpoint).
-                        as(Product.class);  //deserialize response body into Java object.
+                        as(Product.class);  //deserialize response body into a Java object.
 
+        // Verify entire body returned with one easy assertion.
         assertThat(actualProduct, samePropertyValuesAs(expectedProduct));
 
     }

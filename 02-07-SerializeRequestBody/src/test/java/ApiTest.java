@@ -91,20 +91,21 @@ public class ApiTest {
         Product product = new Product(
                 "Water Bottle",
                 "Blue water bottle. Holds 64 ounces",
-                12,
+                28,
                 3
         );
         var response = given().body(product).when().post(endpoint).then();
         response.log().body();
     }
+
     @Test
     public void updateSerializedProduct(){
-        String endpoint = "http://127.0.0.1/api_testing/product/create.php";
+        String endpoint = "http://127.0.0.1/api_testing/product/update.php";
         Product product = new Product(
-                19,
+                28,
                 "Water Bottle",
                 "Blue water bottle. Holds 64 ounces",
-                15,
+                280,
                 3
         );
         var response = given().body(product).when().put(endpoint).then();

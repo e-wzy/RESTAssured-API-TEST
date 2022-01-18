@@ -63,10 +63,10 @@ public class ApiTest {
         String endpoint = "http://127.0.0.1/api_testing/product/update.php";
         String body = """
                 {
-                "id": 19,
+                "id": 22,
                 "name": "Water Bottle",
                 "description": "Blue water bottle. Holds 64 ounces",
-                "price": 15,
+                "price": 25,
                 "category_id": 3
                 }
                 """;

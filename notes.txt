@@ -34,7 +34,7 @@ API setup
 2. Create a database to hold our API data.
     Here, the database provides what the API respones should match.
 
-    1) Click "WebStart",  find MySQL from https://www.mamp.info/,  then click on phpMyAdmin.
+    1) Start the MAMP server, then click "WebStart",  find MySQL from https://www.mamp.info/,  then click on phpMyAdmin.
     2) Enter the database name, then click Create
     3) Import API data.
        Unzip APITesting.zip from exercise folder - "00_03".
@@ -96,7 +96,7 @@ Make API Requests
                      if there is additional information the API will need in order to fulfill our request.
                       
                     The approach to providing the data varies - 
-                                        via query parameters, via body or playload.
+                                        via query parameters, via body or payload.
 
 2. Request methods
 1) API request types 
@@ -158,6 +158,7 @@ Make API Requests
 
     > To generate getter and setter
        in IntelliJ,   right click -> click generate ->choose getter and setter option.
+       these gettter and setter are necessary for serilizer to wrok.
  
    > pom,xml
        To send this body as JSON, an open soure library - Jackson Databind is required.
@@ -169,7 +170,7 @@ Make API Requests
  
    
 8. Sumarry of API requests:
-   A full life cycle of a resource includs creating, viewing, updating and deleting a product
+   A full life cycle of a resource includs creating (post), viewing (get), updating (put) and deleting (delete) a product
   > To update a product,  just need to provide field and its value to be updated, no need to provide every field.
            e.g:  String body = '''"
                                       { "id": 26,
@@ -235,6 +236,7 @@ The returned body contains an array called records which contain multiple object
 How to verify
 ~~~~~~~~~~
 Here,  not verify every single thing or every values of all of the fields in every product.
+do lenient test. 
 
 1). First verify the status code
 2). Verify size of the body > 0  -  A  lenient test (宽松的测试) to verify at least something will be returned.
@@ -259,7 +261,7 @@ Here,  not verify every single thing or every values of all of the fields in eve
      you want to make sure that the response is in the correct format.Otherwise, your consumer's program will break
      when they attempt to parse the response.
 
-  > Use then.log90.headers() to get headers, then copy a header 's name and value to 
+  > Use then.log().headers() to get headers, then copy a header 's name and value to 
      header() to verify.
     e.g.:  header("Content-Type", equalTo("application/json; charset=UTF-8")).
  
@@ -275,7 +277,7 @@ Here,  not verify every single thing or every values of all of the fields in eve
               it takes that response and look for fields within that class to see if the response can be met.
 
   > Define expected result.
-     e.g.:  Product ecpectedProduct = new Product(...);
+     e.g.:  Product expectedProduct = new Product(...);
  
    > Get actual result.
      e.g.:   Product actualProduct = given()... when().get(endpoint).as(Product.class);

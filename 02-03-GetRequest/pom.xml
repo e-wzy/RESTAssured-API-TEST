@@ -7,6 +7,7 @@
     <groupId>org.example</groupId>
     <artifactId>01-03-GetRequest</artifactId>
     <version>1.0</version>
+    <!-- Use either build plugin or properties to compile
     <build>
         <plugins>
             <plugin>
@@ -19,10 +20,10 @@
             </plugin>
         </plugins>
     </build>
-
+-->
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -37,7 +38,7 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.8.1</version>
+            <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

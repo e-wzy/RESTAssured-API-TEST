@@ -19,7 +19,7 @@ Pre-requisites
 3. A few open source dependencies installed.
    1) Junit
    2) REST-Assured library
-   3) Jackson-Databind library.  
+   3) Jackson-Databind library ( send this body as JSON ).  
 
 
 API setup
@@ -137,7 +137,7 @@ Make API Requests
  >  To create a new brand product.
  >  POST Request Body is required, this body is known as a payload.
     A variable to hold the body as a JSON is needed.
- > Use text block to store the body data.
+ > Use text block ( java 15) o store the body data.
     Comment inside the block is not allowed,orelse error will happen.
 > Sample code in 02-04. 
 

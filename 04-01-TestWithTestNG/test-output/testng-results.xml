@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="9" total="13" passed="4" failed="0" skipped="0">
+  <reporter-output>
+    <line>
+      <![CDATA[Test 1 - get categories of product.]]>
+    </line>
+    <line>
+      <![CDATA[Categories of product got.]]>
+    </line>
+    <line>
+      <![CDATA[ Test 2 - get all of products.]]>
+    </line>
+    <line>
+      <![CDATA[All products got.]]>
+    </line>
+  </reporter-output>
+  <suite started-at="2022-01-20T14:08:17 GMT+08:00" name="Test Suite" finished-at="2022-01-20T14:08:24 GMT+08:00" duration-ms="6187">
+    <groups>
+    </groups>
+    <test started-at="2022-01-20T14:08:17 GMT+08:00" name="Test Basics " finished-at="2022-01-20T14:08:23 GMT+08:00" duration-ms="5930">
+      <class name="TestBasics">
+        <test-method signature="getCategories()[pri:0, instance:TestBasics@4c6e276e]" started-at="2022-01-20T14:08:17 GMT+08:00" name="getCategories" finished-at="2022-01-20T14:08:22 GMT+08:00" duration-ms="4194" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[Test 1 - get categories of product.]]>
+            </line>
+            <line>
+              <![CDATA[Categories of product got.]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- getCategories -->
+        <test-method signature="getProduct()[pri:0, instance:TestBasics@4c6e276e]" started-at="2022-01-20T14:08:22 GMT+08:00" name="getProduct" finished-at="2022-01-20T14:08:23 GMT+08:00" duration-ms="1655" status="PASS">
+          <reporter-output>
+            <line>
+              <![CDATA[ Test 2 - get all of products.]]>
+            </line>
+            <line>
+              <![CDATA[All products got.]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- getProduct -->
+      </class> <!-- TestBasics -->
+    </test> <!-- Test Basics  -->
+    <test started-at="2022-01-20T14:08:24 GMT+08:00" name="Test Use Case " finished-at="2022-01-20T14:08:24 GMT+08:00" duration-ms="4">
+      <class name="TestUseCase">
+        <test-method signature="Test_1()[pri:0, instance:TestUseCase@147ed70f]" started-at="2022-01-20T14:08:24 GMT+08:00" name="Test_1" finished-at="2022-01-20T14:08:24 GMT+08:00" duration-ms="0" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test_1 -->
+        <test-method signature="Test_2()[pri:0, instance:TestUseCase@147ed70f]" started-at="2022-01-20T14:08:24 GMT+08:00" name="Test_2" finished-at="2022-01-20T14:08:24 GMT+08:00" duration-ms="1" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Test_2 -->
+      </class> <!-- TestUseCase -->
+    </test> <!-- Test Use Case  -->
+    <test started-at="2022-01-20T14:08:24 GMT+08:00" name="Test to Add" finished-at="2022-01-20T14:08:24 GMT+08:00" duration-ms="0">
+    </test> <!-- Test to Add -->
+  </suite> <!-- Test Suite -->
+</testng-results>
